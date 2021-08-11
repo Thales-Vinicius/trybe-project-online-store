@@ -29,7 +29,6 @@ class Home extends React.Component {
   async getProducts() {
     const { categoryId, filterText } = this.state;
     const products = await api.getProductsFromCategoryAndQuery(categoryId, filterText);
-    console.log(products);
     this.setState({
       products: products.results,
     });
@@ -70,6 +69,7 @@ class Home extends React.Component {
             <ProductCard
               key={ product.id }
               product={ product }
+              search={ filterText }
             />
           ))}
         </div>
