@@ -1,8 +1,5 @@
 import React from 'react';
-// import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
-// import { useLocation } from 'react-router-dom';
 import * as api from '../services/api';
 
 class ProductDetails extends React.Component {
@@ -19,29 +16,21 @@ class ProductDetails extends React.Component {
   }
 
   async getProducts() {
-    const { match: { params: { categoryId, id } } } = this.props;
-    const products = await api.getProductsFromCategoryAndQuery(categoryId);
-    console.log(categoryId);
-    const filterFoundProducts = products.results.find((resultId) => resultId === id);
-    console.log(filterFoundProducts);
+    const { match: { params: { id } } } = this.props;
+    const product = await api.getItem(id);
     this.setState({
-      product: filterFoundProducts,
+      product,
     });
   }
 
-  // findProduct
-
   render() {
-    // const { products } = this.state;
-    // console.log(products);
-    // const { product } = this.state;
-    // console.log(product);
+    const { product } = this.state;
+    console.log(product);
     return (
-      <div className="card" data-testid="product-detail-name">
-        {/* <p>{ product.title }</p>
+      <div className="card">
+        <p data-testid="product-detail-name">{ product.title }</p>
         <img src={ product.thumbnail } alt={ product.title } />
-        <p>{ product.price }</p> */}
-        kkk
+        <p>{ product.price }</p>
       </div>
     );
   }
@@ -51,7 +40,7 @@ ProductDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
-      categoryId: PropTypes.string,
+      search: PropTypes.string,
     }).isRequired,
   }).isRequired,
 };
