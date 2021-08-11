@@ -1,9 +1,8 @@
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as api from '../services/api';
-import Categories from './Categories';
-import ProductCard from './ProductCard';
+import Categories from '../components/Categories';
+import ProductCard from '../components/ProductCard';
 
 class Home extends React.Component {
   constructor(props) {
@@ -21,7 +20,6 @@ class Home extends React.Component {
   }
 
   handleClick = (event) => {
-    // const { categoryId } = this.state;
     this.getProducts();
     this.setState({
       categoryId: event.target.id,
@@ -39,7 +37,6 @@ class Home extends React.Component {
 
   render() {
     const { filterText, products } = this.state;
-    // const { text } = this.props;
     return (
       <div className="App">
         <label htmlFor="input-search" data-testid="home-initial-message">
@@ -60,7 +57,6 @@ class Home extends React.Component {
             pesquisar
           </button>
           <br />
-          {/* <FontAwesomeIcon to="/shoppingcart" icon="fa-solid fa-cart-shopping" /> */}
           <Link
             data-testid="shopping-cart-button"
             to="/shoppingcart"

@@ -20,7 +20,6 @@ ProductCard.propTypes = {
     thumbnail: PropTypes.string,
     price: PropTypes.number,
   }).isRequired,
-  // key: PropTypes.string.isRequired,
 };
 
 export default ProductCard;
