@@ -21,10 +21,6 @@
 //   componentDidUpdate() {
 //     // const category = localStorage.getItem('categoryId');
 //     // const query = localStorage.getItem('filterText');
-//     // this.setState({
-//     //   category,
-//     //   query,
-//     // });
 //     // this.getProducts();
 //   }
 
