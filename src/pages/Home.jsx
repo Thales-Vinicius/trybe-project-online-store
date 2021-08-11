@@ -35,7 +35,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { filterText, products } = this.state;
+    const { filterText, products, categoryId } = this.state;
     return (
       <div className="App">
         <label htmlFor="input-search" data-testid="home-initial-message">
@@ -69,7 +69,8 @@ class Home extends React.Component {
             <ProductCard
               key={ product.id }
               product={ product }
-              search={ filterText }
+              categoryId={ categoryId }
+              // search={ filterText }
             />
           ))}
         </div>
