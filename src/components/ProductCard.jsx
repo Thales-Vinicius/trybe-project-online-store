@@ -12,16 +12,20 @@ class ProductCard extends React.Component {
     const { product: { title, thumbnail, price, id } } = this.props;
     return (
       <div data-testid="product" className="card">
-        <h1>{ title }</h1>
-        <img className="image" src={ thumbnail } alt="Product Banner" />
+        <h2>{ title }</h2>
+        <div>
+          <img className="image" src={ thumbnail } alt="Product Banner" />
+        </div>
         <p>{ price }</p>
-        <Link
-          data-testid="product-detail-link"
-          to={ `/products/${id}` }
-          onClick={ this.handleDetails }
-        >
-          Detalhes
-        </Link>
+        <div>
+          <Link
+            data-testid="product-detail-link"
+            to={ `/products/${id}` }
+            onClick={ this.handleDetails }
+          >
+            Detalhes
+          </Link>
+        </div>
       </div>
     );
   }
