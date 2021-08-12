@@ -1,14 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class ProductCard extends React.Component {
+  handleDetails = () => {
+    const { product } = this.props;
+    localStorage.setItem('product', JSON.stringify(product));
+  }
+
   render() {
-    const { product: { title, thumbnail, price } } = this.props;
+    const { product: { title, thumbnail, price, id } } = this.props;
     return (
-      <div data-testid="product">
+      <div data-testid="product" className="card">
         <h1>{ title }</h1>
-        <img src={ thumbnail } alt="Product Banner" />
+        <img className="image" src={ thumbnail } alt="Product Banner" />
         <p>{ price }</p>
+        <Link
+          data-testid="product-detail-link"
+          to={ `/products/${id}` }
+          onClick={ this.handleDetails }
+        >
+          Detalhes
+        </Link>
       </div>
     );
   }
@@ -19,8 +32,8 @@ ProductCard.propTypes = {
     title: PropTypes.string,
     thumbnail: PropTypes.string,
     price: PropTypes.number,
+    id: PropTypes.string,
   }).isRequired,
-  // key: PropTypes.string.isRequired,
 };
 
 export default ProductCard;

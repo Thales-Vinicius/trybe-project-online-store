@@ -1,9 +1,8 @@
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as api from '../services/api';
-import Categories from './Categories';
-import ProductCard from './ProductCard';
+import Categories from '../components/Categories';
+import ProductCard from '../components/ProductCard';
 
 class Home extends React.Component {
   constructor(props) {
@@ -21,25 +20,28 @@ class Home extends React.Component {
   }
 
   handleClick = (event) => {
-    // const { categoryId } = this.state;
-    this.getProducts();
     this.setState({
       categoryId: event.target.id,
+    },
+    () => {
+      this.getProducts();
     });
   }
 
   async getProducts() {
     const { categoryId, filterText } = this.state;
     const products = await api.getProductsFromCategoryAndQuery(categoryId, filterText);
-    console.log(products);
     this.setState({
       products: products.results,
     });
   }
 
+  buttonClick = () => {
+    this.getProducts();
+  }
+
   render() {
     const { filterText, products } = this.state;
-    // const { text } = this.props;
     return (
       <div className="App">
         <label htmlFor="input-search" data-testid="home-initial-message">
@@ -55,12 +57,11 @@ class Home extends React.Component {
           <button
             data-testid="query-button"
             type="button"
-            onClick={ this.handleClick }
+            onClick={ this.buttonClick }
           >
             pesquisar
           </button>
           <br />
-          {/* <FontAwesomeIcon to="/shoppingcart" icon="fa-solid fa-cart-shopping" /> */}
           <Link
             data-testid="shopping-cart-button"
             to="/shoppingcart"
