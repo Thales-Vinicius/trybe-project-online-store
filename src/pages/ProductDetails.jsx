@@ -21,7 +21,7 @@ class ProductDetails extends React.Component {
     this.getLocalStorage();
   }
 
-  handleClick = (event) => {
+  handleClick = () => {
     // event.preventDefault();
     const { review } = this.state;
     // const { title } = this.props;
@@ -85,8 +85,8 @@ class ProductDetails extends React.Component {
     const { email, message, rating } = review;
     const productStr = localStorage.getItem('product');
     const product = JSON.parse(productStr);
-    const productReviewsStr = localStorage.getItem(product.id);
-    const productReviews = JSON.parse(productReviewsStr);
+    // const productReviewsStr = localStorage.getItem(product.id);
+    // const productReviews = JSON.parse(productReviewsStr);
     // const { message, email, rating } = this.state;
     return (
       <div className="card">
