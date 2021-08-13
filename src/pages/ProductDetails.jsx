@@ -127,6 +127,7 @@ class ProductDetails extends React.Component {
             cols="30"
             rows="10"
             placeholder="Mensagem (Opcional)"
+            data-testid="product-detail-evaluation"
           />
           <label htmlFor="rating">
             <select
@@ -154,7 +155,6 @@ class ProductDetails extends React.Component {
             <div key={ index }>
               <p>
                 {`${attribute.name}: ${attribute.value_name}`}
-
               </p>
 
             </div>
